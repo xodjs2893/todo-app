@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header v-bind:title="pageTitle" />
+    <AddTodo />
+    <Todos v-bind:todos="todos"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/layouts/Header'
+import Todos from './components/Todos'
+import AddTodo from './components/AddTodo'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Todos,
+    AddTodo
+  },
+  data(){
+    return {
+      pageTitle: "Todo 앱",
+      todos: [
+        { id: 1, title: "dentist", complete: false},
+        { id: 2, title: "study", complete: true},
+        { id: 3, title: "dinner", complete: false},
+        { id: 4, title: "sleep", complete: true},
+        { id: 5, title: "gogo", complete: false},
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 </style>
